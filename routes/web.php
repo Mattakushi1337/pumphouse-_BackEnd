@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ResidentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/residents', [ResidentController::class, 'createResident']);
+Route::get('/residents', [ResidentController::class, 'getAllResidents']);
+Route::delete('/residents/{id}', [ResidentController::class, 'deleteResident']);
+Route::put('/residents/{id}', [ResidentController::class, 'updateResident']);
