@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Bill;
+use App\Models\Cost;
 use App\Models\Period;
 use App\Models\PumpMeterRecord;
 use App\Models\Resident;
@@ -23,7 +24,7 @@ class BillController extends Controller
         $totalVolume = PumpMeterRecord::where('period_id', $period_id)->sum('amount_volume');
 
         
-        $totalCost = Period::where('id', $period_id)->sum('water_cost') * $totalVolume;
+        $totalCost = Cost::where('period_id', $period_id)->sum('water_cost') * $totalVolume;
         
         foreach ($residents as $resident) {
             $areaFraction = $resident->area / $totalArea;

@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\BillController;
+use App\Http\Controllers\CostController;
 use App\Http\Controllers\PeriodController;
 use App\Http\Controllers\PumpMeterRecordController;
 use Illuminate\Support\Facades\Route;
@@ -27,3 +28,4 @@ Route::delete('/period/{id}', [PeriodController::class, 'deletePeriod']);
 Route::get('/period', [PeriodController::class, 'getAllPeriods']);
 Route::post('/period/{period_id}/volume', [PumpMeterRecordController::class, 'createVolume']);
 Route::post('/period/{period_id}/bill', [BillController::class, 'bill']);
+Route::post('/period/{period_id}/cost', [CostController::class, 'cost']);
