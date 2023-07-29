@@ -1,7 +1,9 @@
 <?php
 
 
+use App\Http\Controllers\BillController;
 use App\Http\Controllers\PeriodController;
+use App\Http\Controllers\PumpMeterRecordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ResidentController;
 
@@ -23,3 +25,5 @@ Route::put('/residents/{id}', [ResidentController::class, 'updateResident']);
 Route::post('/period', [PeriodController::class, 'createPeriod']);
 Route::delete('/period/{id}', [PeriodController::class, 'deletePeriod']);
 Route::get('/period', [PeriodController::class, 'getAllPeriods']);
+Route::post('/period/{period_id}/volume', [PumpMeterRecordController::class, 'createVolume']);
+Route::post('/period/{period_id}/bill', [BillController::class, 'bill']);
