@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Resident;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class ResidentController extends Controller
@@ -45,19 +44,19 @@ class ResidentController extends Controller
     }
 
     public function updateResident(Request $request, $id)
-{
+    {
 
-    $resident = Resident::find($id);
+        $resident = Resident::find($id);
 
-    if (!$resident) {
-        return response()->json(['message' => 'Дачник не найден'], 404);
+        if (!$resident) {
+            return response()->json(['message' => 'Дачник не найден'], 404);
+        }
+
+        $resident->fio = $request->input('fio');
+        $resident->area = $request->input('area');
+        $resident->start_date = $request->input('start_date');
+        $resident->save();
+
+        return response()->json(['message' => 'Дачник успешно обновлен'], 200);
     }
-
-    $resident->fio = $request->input('fio');
-    $resident->area = $request->input('area');
-    $resident->start_date = $request->input('start_date');
-    $resident->save();
-
-    return response()->json(['message' => 'Дачник успешно обновлен'], 200);
-}
 }
