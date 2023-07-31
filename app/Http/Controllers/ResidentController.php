@@ -59,4 +59,11 @@ class ResidentController extends Controller
 
         return response()->json(['message' => 'Дачник успешно обновлен'], 200);
     }
+
+    public function oneResident($id)
+    {
+        $resident = Resident::find($id);
+
+        return $resident;
+    }
 }

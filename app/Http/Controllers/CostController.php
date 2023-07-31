@@ -17,4 +17,11 @@ class CostController extends Controller
 
         return response()->json(['message' => 'Цена воды за срок установлена'], 201);
     }
+
+    public function showCost($period_id)
+    {
+        $costs = Cost::where('period_id', $period_id)->get();
+
+        return $costs;
+    }
 }
