@@ -17,4 +17,11 @@ class PumpMeterRecordController extends Controller
 
         return response()->json(['message' => 'Показания счётчика успешно добавлены'], 201);
     }
+
+    public function showVolume($period_id) {
+
+        $volume = PumpMeterRecord::where('period_id', $period_id)->get();
+
+        return $volume;
+    }
 }

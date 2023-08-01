@@ -32,3 +32,4 @@ Route::post('/period/{period_id}/bill', [BillController::class, 'bill']);
 Route::post('/period/{period_id}/cost', [CostController::class, 'cost']);
 Route::get('/period/{period_id}/cost', [CostController::class, 'showCost']);
 Route::get('/bill', [BillController::class, 'allBills']);
+Route::get('/period/{period_id}/volume', [PumpMeterRecordController::class, 'showVolume']);
